@@ -48,14 +48,24 @@ const Shop = (props: Props) => (
         </div>
       </div>
     </div>
-    <div className='w-3/12 p-8 space-y-2 bg-white cart_items'>
-      <p className='font-semibold'>No items selected</p>
-      <button
-        type='submit'
-        className='w-full py-2 text-sm bg-yellow-400 rounded-lg'
-      >
-        Proceed to checkout
-      </button>
+    <div className='w-3/12 space-y-6 cart_items'>
+      <div className='p-8 space-y-2 bg-white'>
+        <p className='font-semibold'>No items selected</p>
+        <button
+          type='submit'
+          className='w-full py-2 text-sm bg-yellow-400 rounded-lg'
+        >
+          Proceed to checkout
+        </button>
+      </div>
+      <div className='p-6 bg-white'>
+        <h2 className='font-semibold'>
+          Highly rated skincare products from brands you might like
+        </h2>
+        <div className='my-4'>
+          <div className='product_item'>Product</div>
+        </div>
+      </div>
     </div>
   </div>
 );
