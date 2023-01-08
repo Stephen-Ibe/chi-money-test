@@ -3,6 +3,7 @@ import { useRoutes } from 'react-router';
 
 const Shop = lazy(() => import('../pages/Shop'));
 const Products = lazy(() => import('../pages/Products'));
+const Checkout = lazy(() => import('../pages/Checkout'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 const AppRoutes = () => {
@@ -12,6 +13,7 @@ const AppRoutes = () => {
       children: [
         { element: <Shop />, index: true },
         { element: <Products />, path: '/products' },
+        { element: <Checkout />, path: '/checkout' },
       ],
     },
     { path: '*', element: <NotFound /> },

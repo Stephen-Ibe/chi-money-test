@@ -3,7 +3,10 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 const instance = axios.create({
   baseURL: '',
   withCredentials: true,
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+    'X-API-KEY': process.env.REACT_APP_API_KEY,
+  },
 });
 
 instance.interceptors.request.use(
