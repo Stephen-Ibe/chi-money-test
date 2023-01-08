@@ -5,7 +5,7 @@ type Props = {};
 
 const NotFound = (props: Props) => {
   return (
-    <div className='container flex flex-col items-center justify-center h-screen mx-auto text-center border'>
+    <div className='flex flex-col items-center justify-center h-screen text-center chi-container '>
       <h1 className='text-6xl'>404</h1>
       <p className='uppercase'>Page not found</p>
       <Link

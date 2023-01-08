@@ -3,7 +3,7 @@ import React from 'react';
 type Props = {};
 
 const Shop = (props: Props) => (
-  <div className='container flex gap-10 py-8 mx-auto border'>
+  <div className='flex gap-10 py-8 chi-container'>
     <div className='w-8/12 p-8 bg-white cart'>
       <div className='heading'>
         <h1 className='text-3xl'>Shopping Cart</h1>
