@@ -27,7 +27,9 @@ const Shop = (props: Props) => (
                 </div>
               </div>
               <div>
-                <h4>Amazon Gift Card - Print - Gift Card - Thanks So Much</h4>
+                <h4 className='font-semibold'>
+                  Amazon Gift Card - Print - Gift Card - Thanks So Much
+                </h4>
                 <p>In Stock</p>
                 <p>Sold by REMO TECH US and fulfilled by Amazon CA.</p>
                 <div>
