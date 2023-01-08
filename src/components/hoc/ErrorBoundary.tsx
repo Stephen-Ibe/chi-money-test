@@ -36,8 +36,8 @@ class ErrorBoundary extends Component<Props, State> {
             type='button'
             className='flex items-center'
           >
-            <BiRefresh />
-            Reload
+            {/* <BiRefresh />s */}
+            Click to Reload
           </button>
         </main>
       );
