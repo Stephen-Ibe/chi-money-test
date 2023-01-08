@@ -41,7 +41,7 @@ const Shop = (props: Props) => (
             <div className='product_price'>$50.00</div>
           </div>
         </div>
-        <div className='grid'>
+        <div className='grid pt-4'>
           <p className='text-sm font-semibold justify-self-end'>
             Subtotal(4 items):<span className='font-bold'>$200</span>
           </p>
