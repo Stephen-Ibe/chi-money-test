@@ -60,6 +60,14 @@ const Products = (props: Props) => {
                     </h4>
                     <p className='mt-2 text-sm'>{giftCard.description}</p>
                   </div>
+                  <div>
+                    <Link
+                      to={`/product/${giftCard.productId}`}
+                      className='text-[#007185] hover:text-[#c7511f] font-semibold'
+                    >
+                      View Detail
+                    </Link>
+                  </div>
                 </div>
               ))
             ) : (
