@@ -1,5 +1,6 @@
 import React from 'react';
 import Dummy from '../assets/images/dummy.jpg';
+import { Link } from 'react-router-dom';
 
 type Props = {};
 
@@ -27,9 +28,13 @@ const Shop = (props: Props) => (
               </div>
               <div>
                 <h4>Amazon Gift Card - Print - Gift Card - Thanks So Much</h4>
-                <p>
-                  <strong>Message:</strong> 
-                </p>
+                <p>In Stock</p>
+                <p>Sold by REMO TECH US and fulfilled by Amazon CA.</p>
+                <div>
+                  <input type='checkbox' name='' id='' />
+                  This will be a gift <Link to='#'>Learn more</Link>
+                </div>
+                <div>s</div>
               </div>
             </div>
 
