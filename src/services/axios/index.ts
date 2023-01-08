@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://api.chimoney.io/v0.2/',
+  baseURL: '',
   withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
 });
