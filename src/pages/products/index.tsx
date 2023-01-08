@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllGiftCards } from '../services/apis/Cards.api';
+import { getAllGiftCards } from '../../services/apis/Cards.api';
 import { Link } from 'react-router-dom';
 
 type Props = {};
@@ -62,7 +62,7 @@ const Products = (props: Props) => {
                   </div>
                   <div>
                     <Link
-                      to={`/product/${giftCard.productId}`}
+                      to={`/products/${giftCard.productId}`}
                       className='text-[#007185] hover:text-[#c7511f] font-semibold'
                     >
                       View Detail
