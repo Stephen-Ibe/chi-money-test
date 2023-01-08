@@ -1,4 +1,5 @@
 import React from 'react';
+import Dummy from '../assets/images/dummy.jpg';
 
 type Props = {};
 
@@ -16,8 +17,23 @@ const Shop = (props: Props) => (
           <p className='text-sm justify-self-end'>Price</p>
         </div>
         <div className='py-4 products border-y-2'>
-          <div className='product_item'>
-            <input type='checkbox' name='' id='' />
+          <div className='flex justify-between product_item'>
+            <div className='flex'>
+              <div className='flex items-center'>
+                <input type='checkbox' name='' id='' />
+                <div>
+                  <img src={Dummy} alt='product' width={180} height={180} />
+                </div>
+              </div>
+              <div>
+                <h4>Amazon Gift Card - Print - Gift Card - Thanks So Much</h4>
+                <p>
+                  <strong>Message:</strong> 
+                </p>
+              </div>
+            </div>
+
+            <div className='product_price'>$50.00</div>
           </div>
         </div>
         <div className='grid'>
