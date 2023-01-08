@@ -44,7 +44,7 @@ const Products = (props: Props) => {
         <div className='grid gap-8 gap-y-24 gid-cols-1 lg:grid-cols-4 md:grid-cols-2'>
           {giftCards?.content?.length > 0 ? (
             giftCards?.content?.map((giftCard: any) => (
-              <div className='border-4'>
+              <div className='border-4' key={giftCard.productId}>
                 <div className='relative w-full h-[200px]'>
                   <img
                     src={giftCard.img}
@@ -52,7 +52,7 @@ const Products = (props: Props) => {
                     className='absolute object-cover w-full h-full'
                   />
                 </div>
-                <div>
+                <div className='my-2'>
                   <h4 className='text-base font-semibold'>
                     {giftCard.productName}
                   </h4>
