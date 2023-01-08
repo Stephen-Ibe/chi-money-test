@@ -1,9 +1,9 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/css/index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundary from './components/hoc/ErrorBoundary';
+import KickOff from './routes';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <ErrorBoundary>
-      <App />
+      <KickOff />
     </ErrorBoundary>
   </StrictMode>
 );
