@@ -21,51 +21,54 @@ const Products = (props: Props) => {
   }, []);
 
   return (
-    <div className='chi-container'>
-      <div className='py-8 text-center border-b-2'>
-        <h1 className='text-3xl font-semibold'>
-          Shop for the perfect gift card
-        </h1>
-      </div>
-      <nav className='my-8'>
-        <ul className='flex items-center justify-center text-sm gap-x-8'>
-          <li className='underline'>
-            <Link to='#'>View Gift Card Balance</Link>
-          </li>
-          <li className='underline'>
-            <Link to='#'>Reload Your Balance</Link>
-          </li>
-          <li className='underline'>
-            <Link to='#'>Redeem An Amazon Gift Card</Link>
-          </li>
-        </ul>
-      </nav>
-      <section className='p-8 my-16 products'>
-        <div className='grid gap-8 gap-y-24 gid-cols-1 lg:grid-cols-4 md:grid-cols-2'>
-          {giftCards?.content?.length > 0 ? (
-            giftCards?.content?.map((giftCard: any) => (
-              <div className='border-4' key={giftCard.productId}>
-                <div className='relative w-full h-[200px]'>
-                  <img
-                    src={giftCard.img}
-                    alt='giftCard_image'
-                    className='absolute object-cover w-full h-full'
-                  />
-                </div>
-                <div className='my-2'>
-                  <h4 className='text-base font-semibold'>
-                    {giftCard.productName}
-                  </h4>
-                  <p className='text-sm'>{giftCard.description}</p>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p className='text-center'>No Gift Cards Founds</p>
-          )}
+    <>
+      <nav className='border-4'>navabr</nav>
+      <div className='chi-container'>
+        <div className='py-8 text-center border-b-2'>
+          <h1 className='text-3xl font-semibold'>
+            Shop for the perfect gift card
+          </h1>
         </div>
-      </section>
-    </div>
+        <nav className='my-8'>
+          <ul className='flex items-center justify-center text-sm gap-x-8'>
+            <li className='underline'>
+              <Link to='#'>View Gift Card Balance</Link>
+            </li>
+            <li className='underline'>
+              <Link to='#'>Reload Your Balance</Link>
+            </li>
+            <li className='underline'>
+              <Link to='#'>Redeem An Amazon Gift Card</Link>
+            </li>
+          </ul>
+        </nav>
+        <section className='p-8 my-16 products'>
+          <div className='grid gap-8 gap-y-24 gid-cols-1 lg:grid-cols-4 md:grid-cols-2'>
+            {giftCards?.content?.length > 0 ? (
+              giftCards?.content?.map((giftCard: any) => (
+                <div className='' key={giftCard.productId}>
+                  <div className='relative w-full h-[200px]'>
+                    <img
+                      src={giftCard.img}
+                      alt='giftCard_image'
+                      className='absolute object-cover w-full h-full'
+                    />
+                  </div>
+                  <div className='my-4'>
+                    <h4 className='text-lg font-semibold'>
+                      {giftCard.productName}
+                    </h4>
+                    <p className='mt-2 text-sm'>{giftCard.description}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className='text-center'>No Gift Cards Founds</p>
+            )}
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
