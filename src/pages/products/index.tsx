@@ -38,16 +38,25 @@ const Products = (props: Props) => {
   }, []);
 
   return (
-    <>
-      <nav className='border-4'>navabr</nav>
-      <div className='chi-container'>
+    <div className='flex flex-col'>
+      <nav className='navbar'>
+        <div className='flex items-center justify-between p-4 chi-container'>
+          <div className='logo'>
+            <h4>My Shop</h4>
+          </div>
+          <div className='cart'>
+            <Link to='/cart'>Cart</Link>
+          </div>
+        </div>
+      </nav>
+      <div className='relative mt-16 chi-container'>
         <div className='py-8 text-center border-b-2'>
           <h1 className='text-3xl font-semibold'>
             Shop for the perfect gift card
           </h1>
         </div>
         <nav className='my-8'>
-          <ul className='flex flex-col items-center justify-center text-sm gap-y-4 md:gap-y-0 md:flex-row md:gap-x-8'>
+          <ul className='shop_links'>
             {productNav?.map(({ id, title }: { id: number; title: string }) => (
               <li className='underline' key={id}>
                 <Link to='#'>{title}</Link>
@@ -56,8 +65,8 @@ const Products = (props: Props) => {
           </ul>
         </nav>
 
-        <section className='p-8 my-16 products'>
-          <div className='grid gap-8 gap-y-24 gid-cols-1 lg:grid-cols-4 md:grid-cols-2'>
+        <section className='p-8 my-16'>
+          <div className='products'>
             {loading ? (
               Array.from(new Array(12)).map(() => (
                 <>
@@ -91,7 +100,7 @@ const Products = (props: Props) => {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 };
 

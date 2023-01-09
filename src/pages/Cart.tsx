@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Dummy from '../assets/images/dummy.jpg';
 import { Link } from 'react-router-dom';
 import ChiButton from '../components/common/button';
 
 type Props = {};
 
-const Shop = (props: Props) => (
+const Cart: FC = (props: Props) => (
   <div className='flex gap-10 py-8 border chi-container'>
     <div className='w-8/12 p-8 bg-white cart'>
       <div className='heading'>
@@ -72,4 +72,4 @@ const Shop = (props: Props) => (
   </div>
 );
 
-export default Shop;
+export default Cart;

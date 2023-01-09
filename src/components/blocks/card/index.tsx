@@ -9,16 +9,11 @@ const GiftCard = ({ giftCard }: Props) => {
   return (
     <section>
       <div className='giftCard'>
-        <img
-          src={giftCard.img}
-          alt='giftCard_image'
-          className='absolute object-cover w-full h-full'
-          loading='lazy'
-        />
+        <img src={giftCard.img} alt='giftCard_image' loading='lazy' />
       </div>
       <div className='giftCard_content'>
-        <h4 className='text-lg font-semibold'>{giftCard.productName}</h4>
-        <p className='mt-2 text-sm'>{giftCard.description}</p>
+        <h4>{giftCard.productName}</h4>
+        <p>{giftCard.description}</p>
       </div>
       <div>
         <Link to={`/products/${giftCard.productId}`} className='detail_link'>

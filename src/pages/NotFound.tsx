@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-type Props = {};
-
-const NotFound = (props: Props) => {
+const NotFound: FC = () => {
   return (
     <div className='notFound chi-container'>
       <h1 className='text-6xl'>404</h1>

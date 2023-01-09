@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 const OrderSummary = ({
   name,
@@ -15,7 +15,7 @@ const OrderSummary = ({
 
 type Props = {};
 
-const Checkout = (props: Props) => {
+const Checkout: FC = (props: Props) => {
   return (
     <div className='border chi-container'>
       <div className='py-4 text-center heading'>

@@ -47,12 +47,32 @@
     @apply container mx-auto;
   }
 
+  .navbar {
+    @apply fixed top-0 z-30 w-full bg-[#0f1111] text-white shadow-inner font-semibold;
+  }
+
+  .shop_links {
+    @apply flex flex-col items-center justify-center text-sm gap-y-4 md:gap-y-0 md:flex-row md:gap-x-8;
+  }
+
+  .products {
+    @apply grid grid-cols-1 gap-8 gap-y-24 lg:grid-cols-4 md:grid-cols-2;
+  }
+
   .giftCard {
     @apply h-[200px] w-[100%] relative;
   }
-
+  .giftCard img {
+    @apply absolute object-cover w-full h-full;
+  }
   .giftCard_content {
     @apply my-4;
+  }
+  .giftCard_content h4 {
+    @apply text-lg font-semibold;
+  }
+  .giftCard p {
+    @apply mt-2 text-sm;
   }
 
   .detail_link {
@@ -62,6 +82,7 @@
   .checkout_disabled {
     @apply bg-[#fffae0] text-center w-full text-slate-500 text-xs py-3 rounded-lg shadow-lg font-semibold cursor-not-allowed;
   }
+
   .notFound {
     @apply flex flex-col items-center justify-center h-screen text-center;
   }
