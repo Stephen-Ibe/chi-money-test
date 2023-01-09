@@ -16,7 +16,7 @@ const GiftCard = ({ giftCard }: Props) => {
           loading='lazy'
         />
       </div>
-      <div className='my-4'>
+      <div className='giftCard_content'>
         <h4 className='text-lg font-semibold'>{giftCard.productName}</h4>
         <p className='mt-2 text-sm'>{giftCard.description}</p>
       </div>

@@ -47,7 +47,7 @@ const Products = (props: Props) => {
           </h1>
         </div>
         <nav className='my-8'>
-          <ul className='flex items-center justify-center text-sm gap-x-8'>
+          <ul className='flex flex-col items-center justify-center text-sm gap-y-4 md:gap-y-0 md:flex-row md:gap-x-8'>
             {productNav?.map(({ id, title }: { id: number; title: string }) => (
               <li className='underline' key={id}>
                 <Link to='#'>{title}</Link>
@@ -74,7 +74,7 @@ const Products = (props: Props) => {
                     />
                     <Skeleton />
                     <Skeleton
-                      width='20%'
+                      width='25%'
                       variant='text'
                       style={{ marginTop: '1rem' }}
                     />
@@ -88,13 +88,6 @@ const Products = (props: Props) => {
             ) : (
               <p className='text-center'>No Gift Cards Founds</p>
             )}
-            {/* {giftCards?.content?.length > 0 ? (
-              giftCards?.content?.map((giftCard: any) => (
-                <GiftCard key={giftCard.productId} giftCard={giftCard} />
-              ))
-            ) : (
-              <p className='text-center'>No Gift Cards Founds</p>
-            )} */}
           </div>
         </section>
       </div>
