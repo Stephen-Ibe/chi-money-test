@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { getAllGiftCards } from '../../services/apis/Cards.api';
 import { Link } from 'react-router-dom';
 import GiftCard from '../../components/blocks/card';
@@ -40,16 +41,19 @@ const Products = (props: Props) => {
   return (
     <div className='flex flex-col'>
       <nav className='navbar'>
-        <div className='flex items-center justify-between p-4 chi-container'>
+        <div className='chi-container'>
           <div className='logo'>
             <h4>My Shop</h4>
           </div>
           <div className='cart'>
-            <Link to='/cart'>Cart</Link>
+            <Link to='/cart'>
+              <ShoppingCartOutlinedIcon />
+              <span className=''>4</span>
+            </Link>
           </div>
         </div>
       </nav>
-      <div className='relative mt-16 chi-container'>
+      <div className='relative mt-20 chi-container'>
         <div className='py-8 text-center border-b-2'>
           <h1 className='text-3xl font-semibold'>
             Shop for the perfect gift card

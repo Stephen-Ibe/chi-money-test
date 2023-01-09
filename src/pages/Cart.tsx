@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import Dummy from '../assets/images/dummy.jpg';
 import { Link } from 'react-router-dom';
 import ChiButton from '../components/common/button';
@@ -8,18 +9,18 @@ type Props = {};
 const Cart: FC = (props: Props) => (
   <div className='flex gap-10 py-8 border chi-container'>
     <div className='w-8/12 p-8 bg-white cart'>
-      <div className='heading'>
+      <div className=''>
         <h1 className='text-3xl'>Shopping Cart</h1>
         <p>
           No items selected. <span>Select all items</span>
         </p>
       </div>
-      <div className='products'>
+      <div className='product'>
         <div className='grid'>
           <p className='text-sm justify-self-end'>Price</p>
         </div>
-        <div className='py-4 products border-y-2'>
-          <div className='flex justify-between product_item'>
+        <div className='py-4 border-y-2'>
+          <div className='flex justify-between '>
             <div className='flex'>
               <div className='flex items-center'>
                 <input type='checkbox' name='' id='' />
