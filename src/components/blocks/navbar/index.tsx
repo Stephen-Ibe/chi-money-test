@@ -6,7 +6,7 @@ const Navbar: FC = () => (
   <nav className='navbar'>
     <div className='chi-container'>
       <div className='logo'>
-        <h4>ChiShop</h4>
+        <h4 className='text-2xl'>Chi-Shop</h4>
       </div>
       <div className='cart'>
         <Link to='/cart'>
