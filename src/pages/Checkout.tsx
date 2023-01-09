@@ -26,11 +26,7 @@ const Checkout = (props: Props) => {
         <div className='w-3/12 border rounded-lg border-slate-400'>
           <div className='m-6'>
             <div className='space-y-2 text-center'>
-              <button
-                type='button'
-                className='bg-[#fffae0] text-center w-full text-slate-500 text-xs py-3 rounded-lg shadow-lg font-semibold'
-                disabled
-              >
+              <button type='button' className='checkout_disabled' disabled>
                 Use this payment method
               </button>
               <p className='text-sm'>

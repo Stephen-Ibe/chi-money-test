@@ -32,6 +32,15 @@
   }
 }
 
+@layer components {
+  .btn {
+    @apply py-2 text-center border-none rounded-lg;
+  }
+  .btn-blue {
+    @apply px-8 my-4 font-semibold text-white bg-blue-400;
+  }
+}
+
 @layer utilities {
   .chi-container {
     @apply container mx-auto;
@@ -39,5 +48,12 @@
 
   .detail_link {
     @apply text-[#007185] hover:text-[#c7511f] font-semibold;
+  }
+
+  .checkout_disabled {
+    @apply bg-[#fffae0] text-center w-full text-slate-500 text-xs py-3 rounded-lg shadow-lg font-semibold;
+  }
+  .notFound {
+    @apply flex flex-col items-center justify-center h-screen text-center;
   }
 }
