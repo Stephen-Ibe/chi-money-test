@@ -36,4 +36,8 @@
   .chi-container {
     @apply container mx-auto;
   }
+
+  .detail_link {
+    @apply text-[#007185] hover:text-[#c7511f] font-semibold;
+  }
 }

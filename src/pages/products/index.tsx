@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { getAllGiftCards } from '../../services/apis/Cards.api';
 import { Link } from 'react-router-dom';
+import GiftCard from '../../components/blocks/card';
 
 type Props = {};
+
+const productNav = [
+  { id: 0, title: 'View Gift Card Balance' },
+  { id: 1, title: 'Reload Your Balance' },
+  { id: 2, title: 'Redeem An Amazon Gift Card' },
+];
 
 const Products = (props: Props) => {
   const [giftCards, setGiftCards] = useState<Record<string, any>>({});
@@ -18,6 +25,10 @@ const Products = (props: Props) => {
 
   useEffect(() => {
     fetchAllGiftCards();
+
+    return () => {
+      setGiftCards({});
+    };
   }, []);
 
   return (
@@ -31,44 +42,18 @@ const Products = (props: Props) => {
         </div>
         <nav className='my-8'>
           <ul className='flex items-center justify-center text-sm gap-x-8'>
-            <li className='underline'>
-              <Link to='#'>View Gift Card Balance</Link>
-            </li>
-            <li className='underline'>
-              <Link to='#'>Reload Your Balance</Link>
-            </li>
-            <li className='underline'>
-              <Link to='#'>Redeem An Amazon Gift Card</Link>
-            </li>
+            {productNav?.map(({ id, title }: { id: number; title: string }) => (
+              <li className='underline' key={id}>
+                <Link to='#'>{title}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <section className='p-8 my-16 products'>
           <div className='grid gap-8 gap-y-24 gid-cols-1 lg:grid-cols-4 md:grid-cols-2'>
             {giftCards?.content?.length > 0 ? (
               giftCards?.content?.map((giftCard: any) => (
-                <div className='' key={giftCard.productId}>
-                  <div className='relative w-full h-[200px]'>
-                    <img
-                      src={giftCard.img}
-                      alt='giftCard_image'
-                      className='absolute object-cover w-full h-full'
-                    />
-                  </div>
-                  <div className='my-4'>
-                    <h4 className='text-lg font-semibold'>
-                      {giftCard.productName}
-                    </h4>
-                    <p className='mt-2 text-sm'>{giftCard.description}</p>
-                  </div>
-                  <div>
-                    <Link
-                      to={`/products/${giftCard.productId}`}
-                      className='text-[#007185] hover:text-[#c7511f] font-semibold'
-                    >
-                      View Detail
-                    </Link>
-                  </div>
-                </div>
+                <GiftCard key={giftCard.productId} giftCard={giftCard} />
               ))
             ) : (
               <p className='text-center'>No Gift Cards Founds</p>

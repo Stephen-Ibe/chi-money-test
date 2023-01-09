@@ -1,6 +1,7 @@
 import React from 'react';
 import Dummy from '../assets/images/dummy.jpg';
 import { Link } from 'react-router-dom';
+import ChiButton from '../components/common/button';
 
 type Props = {};
 
@@ -53,12 +54,11 @@ const Shop = (props: Props) => (
     <div className='w-3/12 space-y-6 cart_items'>
       <div className='p-8 space-y-2 bg-white'>
         <p className='font-semibold'>No items selected</p>
-        <button
-          type='submit'
+        <ChiButton
+          title='Proceed to Checkout'
           className='w-full py-2 text-sm bg-yellow-400 rounded-lg'
-        >
-          Proceed to checkout
-        </button>
+          type='submit'
+        />
       </div>
       <div className='p-6 bg-white'>
         <h2 className='font-semibold'>
