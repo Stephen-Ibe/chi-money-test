@@ -38,10 +38,10 @@
 
 @layer components {
   .btn {
-    @apply py-2 text-center border-none rounded-lg;
+    @apply px-2 py-2 text-center rounded-lg;
   }
   .btn-blue {
-    @apply px-8 my-4 font-semibold text-white bg-blue-400;
+    @apply px-8 my-4 font-semibold text-white bg-blue-400 border-none;
   }
 }
 
@@ -96,6 +96,13 @@
 
   .detail_link:hover {
     color: var(--chi-orange);
+  }
+
+  .card_details {
+  }
+
+  .card_details p {
+    @apply text-sm;
   }
 
   .checkout_disabled {
