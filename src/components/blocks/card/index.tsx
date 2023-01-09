@@ -16,7 +16,11 @@ const GiftCard = ({ giftCard }: Props) => {
         <p>{giftCard.description}</p>
       </div>
       <div>
-        <Link to={`/products/${giftCard.productId}`} className='detail_link'>
+        <Link
+          to={`/products/${giftCard.productId}`}
+          className='detail_link'
+          state={{ ...giftCard }}
+        >
           View Detail
         </Link>
       </div>

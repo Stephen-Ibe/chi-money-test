@@ -16,6 +16,8 @@
   :root {
     --chi-grey: #565959;
     --chi-dark: #0f1111;
+    --chi-teal: #007185;
+    --chi-orange: #c7511f;
   }
 
   html,
@@ -88,7 +90,12 @@
   }
 
   .detail_link {
-    @apply text-[#007185] hover:text-[#c7511f] font-semibold;
+    @apply font-semibold;
+    color: var(--chi-teal);
+  }
+
+  .detail_link:hover {
+    color: var(--chi-orange);
   }
 
   .checkout_disabled {
