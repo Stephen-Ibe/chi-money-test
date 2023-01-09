@@ -12,16 +12,14 @@ const AppRoutes = () => {
     {
       path: '/',
       children: [
-        { element: <Shop />, index: true },
-        { element: <Checkout />, path: '/checkout' },
+        { element: <Products />, index: true },
+        { element: <Checkout />, path: 'checkout' },
+        { element: <Shop />, path: 'cart' },
       ],
     },
     {
       path: '/products',
-      children: [
-        { element: <Products />, index: true },
-        { element: <ProductDetail />, path: ':id' },
-      ],
+      children: [{ element: <ProductDetail />, path: ':id' }],
     },
     { path: '*', element: <NotFound /> },
   ]);
