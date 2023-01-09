@@ -8,7 +8,7 @@ type Props = {
 const GiftCard = ({ giftCard }: Props) => {
   return (
     <section>
-      <div className='relative w-full h-[200px]'>
+      <div className='giftCard'>
         <img
           src={giftCard.img}
           alt='giftCard_image'

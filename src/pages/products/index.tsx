@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getAllGiftCards } from '../../services/apis/Cards.api';
 import { Link } from 'react-router-dom';
 import GiftCard from '../../components/blocks/card';
+import Skeleton from '@mui/material/Skeleton';
+import Box from '@mui/material/Box';
 
 type Props = {};
 
@@ -13,13 +15,17 @@ const productNav = [
 
 const Products = (props: Props) => {
   const [giftCards, setGiftCards] = useState<Record<string, any>>({});
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchAllGiftCards = async () => {
+    setLoading(true);
     try {
       const res = await getAllGiftCards();
       setGiftCards(res.data.giftCardsRLD);
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,15 +55,46 @@ const Products = (props: Props) => {
             ))}
           </ul>
         </nav>
+
         <section className='p-8 my-16 products'>
           <div className='grid gap-8 gap-y-24 gid-cols-1 lg:grid-cols-4 md:grid-cols-2'>
-            {giftCards?.content?.length > 0 ? (
+            {loading ? (
+              Array.from(new Array(12)).map(() => (
+                <>
+                  <Box sx={{ rowGap: 1 }}>
+                    <Skeleton
+                      animation='wave'
+                      variant='rectangular'
+                      height={200}
+                    />
+                    <Skeleton
+                      width='60%'
+                      variant='text'
+                      style={{ marginTop: '8px' }}
+                    />
+                    <Skeleton />
+                    <Skeleton
+                      width='20%'
+                      variant='text'
+                      style={{ marginTop: '1rem' }}
+                    />
+                  </Box>
+                </>
+              ))
+            ) : giftCards?.content?.length > 0 ? (
               giftCards?.content?.map((giftCard: any) => (
                 <GiftCard key={giftCard.productId} giftCard={giftCard} />
               ))
             ) : (
               <p className='text-center'>No Gift Cards Founds</p>
             )}
+            {/* {giftCards?.content?.length > 0 ? (
+              giftCards?.content?.map((giftCard: any) => (
+                <GiftCard key={giftCard.productId} giftCard={giftCard} />
+              ))
+            ) : (
+              <p className='text-center'>No Gift Cards Founds</p>
+            )} */}
           </div>
         </section>
       </div>

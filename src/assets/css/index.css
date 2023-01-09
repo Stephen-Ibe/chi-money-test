@@ -46,12 +46,16 @@
     @apply container mx-auto;
   }
 
+  .giftCard {
+    @apply h-[200px] w-full relative;
+  }
+
   .detail_link {
     @apply text-[#007185] hover:text-[#c7511f] font-semibold;
   }
 
   .checkout_disabled {
-    @apply bg-[#fffae0] text-center w-full text-slate-500 text-xs py-3 rounded-lg shadow-lg font-semibold;
+    @apply bg-[#fffae0] text-center w-full text-slate-500 text-xs py-3 rounded-lg shadow-lg font-semibold cursor-not-allowed;
   }
   .notFound {
     @apply flex flex-col items-center justify-center h-screen text-center;
