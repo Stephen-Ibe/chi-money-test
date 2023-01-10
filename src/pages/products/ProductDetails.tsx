@@ -57,6 +57,9 @@ const ProductDetails = () => {
                 />
               </div>
             </div>
+            <div>
+              <p>Description: {state.description}</p>
+            </div>
           </div>
         </section>
       </div>
