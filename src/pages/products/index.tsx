@@ -6,6 +6,7 @@ import GiftCard from '../../components/blocks/card';
 import Skeleton from '@mui/material/Skeleton';
 import Box from '@mui/material/Box';
 import Navbar from '../../components/blocks/navbar';
+import { GenericType } from '../../types';
 
 type Props = {};
 
@@ -32,7 +33,7 @@ const Products = (props: Props) => {
     }
   };
 
-  const addToCart = (data: { [key: string]: any }) => {
+  const addToCart = (data: GenericType) => {
     console.log(data);
   };
 
