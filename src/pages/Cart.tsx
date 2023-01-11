@@ -7,7 +7,7 @@ import ChiButton from '../components/common/button';
 type Props = {};
 
 const Cart: FC = (props: Props) => (
-  <div className='flex gap-10 py-8 border chi-container'>
+  <div className='flex justify-between p-8 border-2 chi-container'>
     <div className='w-8/12 p-8 bg-white cart'>
       <div className=''>
         <h1 className='text-3xl'>Shopping Cart</h1>
@@ -15,7 +15,7 @@ const Cart: FC = (props: Props) => (
           No items selected. <span>Select all items</span>
         </p>
       </div>
-      <div className='product'>
+      <div className=''>
         <div className='grid'>
           <p className='text-sm justify-self-end'>Price</p>
         </div>
@@ -28,21 +28,26 @@ const Cart: FC = (props: Props) => (
                   <img src={Dummy} alt='product' width={180} height={180} />
                 </div>
               </div>
-              <div>
-                <h4 className='font-semibold'>
+              <div className='border-2 w-ful'>
+                <h4 className='text-2xl font-semibold'>
                   Amazon Gift Card - Print - Gift Card - Thanks So Much
                 </h4>
-                <p>In Stock</p>
-                <p>Sold by REMO TECH US and fulfilled by Amazon CA.</p>
-                <div>
+                <p className='text-sm text-green-600'>In Stock</p>
+                <p className='flex text-sm'>
+                  Sold by <Link to='#!'> REMO TECH US</Link> and fulfilled by
+                  Amazon CA.
+                </p>
+                <div className='flex text-gray-800 gap-x-1'>
                   <input type='checkbox' name='' id='' />
-                  This will be a gift <Link to='#'>Learn more</Link>
+                  <p className='flex gap-x-2'>
+                    This will be a gift <Link to='#'>Learn more</Link>
+                  </p>
                 </div>
                 <div>s</div>
               </div>
             </div>
 
-            <div className='product_price'>$50.00</div>
+            <div className='w-1/12 product_price'>$50.00</div>
           </div>
         </div>
         <div className='grid pt-4'>
@@ -55,11 +60,13 @@ const Cart: FC = (props: Props) => (
     <div className='w-3/12 space-y-6 cart_items'>
       <div className='p-8 space-y-2 bg-white'>
         <p className='font-semibold'>No items selected</p>
-        <ChiButton
-          title='Proceed to Checkout'
-          className='w-full py-2 text-sm bg-yellow-400 rounded-lg'
-          type='submit'
-        />
+        <Link to='/checkout'>
+          <ChiButton
+            title='Proceed to Checkout'
+            className='w-full py-2 text-sm bg-yellow-400 rounded-lg'
+            type='submit'
+          />
+        </Link>
       </div>
       <div className='p-6 bg-white'>
         <h2 className='font-semibold'>
