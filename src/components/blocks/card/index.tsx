@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import store from 'store';
 import ChiButton from '../../common/button';
@@ -20,7 +20,7 @@ const GiftCard = ({ giftCard, addToCart }: Props) => {
   const [quantity, setQuantity] = React.useState('');
   const [productExists, setProductExists] = useState<any>({});
 
-  const checkIfProductExists = () => {
+  const checkIfProductExists = useCallback(() => {
     const cartList = store.get('cart');
     if (cartList.length <= 0) {
       setProductExists({});
@@ -30,7 +30,7 @@ const GiftCard = ({ giftCard, addToCart }: Props) => {
       );
       setProductExists(exists[0]);
     }
-  };
+  }, [giftCard.productId]);
 
   const addProductToCart = (event: SelectChangeEvent) => {
     const { value } = event.target;
@@ -42,7 +42,7 @@ const GiftCard = ({ giftCard, addToCart }: Props) => {
   };
   useEffect(() => {
     checkIfProductExists();
-  }, []);
+  }, [checkIfProductExists]);
 
   return (
     <section className='giftCard'>
