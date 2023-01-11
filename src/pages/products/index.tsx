@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useState } from 'react';
-
+import store from 'store';
 import { getAllGiftCards } from '../../services/apis/Cards.api';
 import { Link } from 'react-router-dom';
 import GiftCard from '../../components/blocks/card';
@@ -18,6 +18,8 @@ const productNav = [
 
 const Products = (props: Props) => {
   const uId = useId();
+  const cartItems = store.get('cart');
+
   const [giftCards, setGiftCards] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -34,7 +36,7 @@ const Products = (props: Props) => {
   };
 
   const addToCart = (data: GenericType) => {
-    console.log(data);
+    store.set('cart', [...cartItems, data]);
   };
 
   useEffect(() => {
