@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ChiButton from '../../common/button';
 import { GenericType } from '../../../types';
+import {
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from '@mui/material';
 
 type Props = {
   giftCard: { [key: string]: any };
@@ -9,6 +15,17 @@ type Props = {
 };
 
 const GiftCard = ({ giftCard, addToCart }: Props) => {
+  const [addProduct, setAddProduct] = useState<boolean>(false);
+  const [quantity, setQuantity] = React.useState('');
+
+  const addProductToCart = (event: SelectChangeEvent) => {
+    const { value } = event.target;
+    setQuantity(value);
+
+    setAddProduct(!addProduct);
+    addToCart({ id: giftCard.productId, quantity: value });
+  };
+
   return (
     <section>
       <div className='giftCard'>
@@ -26,11 +43,31 @@ const GiftCard = ({ giftCard, addToCart }: Props) => {
         >
           View Detail
         </Link>
-        <ChiButton
-          title='Add To Cart'
-          className='px-4 py-2 text-xs font-semibold bg-yellow-400 rounded'
-          onClick={() => addToCart(giftCard)}
-        />
+        {addProduct ? (
+          <div className='w-4/12'>
+            <FormControl fullWidth size='small'>
+              <Select
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
+                value={quantity}
+                onChange={addProductToCart}
+              >
+                <MenuItem disabled value=''>
+                  <em>Qty</em>
+                </MenuItem>
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+        ) : (
+          <ChiButton
+            title='Add To Cart'
+            className='px-4 py-2 text-xs font-semibold bg-yellow-400 rounded'
+            onClick={() => setAddProduct(!addProduct)}
+          />
+        )}
       </div>
     </section>
   );

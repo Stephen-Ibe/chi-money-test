@@ -80,13 +80,13 @@
     @apply absolute object-cover w-full h-full;
   }
   .giftCard_content {
-    @apply h-24 my-4;
+    @apply mt-6 h-28;
   }
   .giftCard_content h4 {
     @apply text-lg font-semibold;
   }
   .giftCard p {
-    @apply mt-2 text-sm;
+    @apply w-10/12 mt-2 text-xs;
   }
 
   .detail_link {
