@@ -80,7 +80,7 @@
     @apply absolute object-cover w-full h-full;
   }
   .giftCard_content {
-    @apply my-4;
+    @apply h-24 my-4;
   }
   .giftCard_content h4 {
     @apply text-lg font-semibold;

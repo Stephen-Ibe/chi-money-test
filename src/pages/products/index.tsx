@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 
 import { getAllGiftCards } from '../../services/apis/Cards.api';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,7 @@ const productNav = [
 ];
 
 const Products = (props: Props) => {
+  const uId = useId();
   const [giftCards, setGiftCards] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -29,6 +30,10 @@ const Products = (props: Props) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const addToCart = (data: { [key: string]: any }) => {
+    console.log(data);
   };
 
   useEffect(() => {
@@ -61,8 +66,8 @@ const Products = (props: Props) => {
         <section className='p-8 my-16'>
           <div className='products'>
             {loading ? (
-              Array.from(new Array(12)).map(() => (
-                <>
+              Array.from(new Array(12)).map((_, idx) => (
+                <div key={`${uId}_${idx}`}>
                   <Box sx={{ rowGap: 1 }}>
                     <Skeleton
                       animation='wave'
@@ -81,11 +86,15 @@ const Products = (props: Props) => {
                       style={{ marginTop: '1rem' }}
                     />
                   </Box>
-                </>
+                </div>
               ))
             ) : giftCards?.content?.length > 0 ? (
               giftCards?.content?.map((giftCard: any) => (
-                <GiftCard key={giftCard.productId} giftCard={giftCard} />
+                <GiftCard
+                  key={giftCard.productId}
+                  giftCard={giftCard}
+                  addToCart={addToCart}
+                />
               ))
             ) : (
               <p className='text-center'>No Gift Cards Founds</p>
