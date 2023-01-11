@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import store from 'store';
 import ChiButton from '../../common/button';
 import { GenericType } from '../../../types';
 import {
@@ -17,25 +18,38 @@ type Props = {
 const GiftCard = ({ giftCard, addToCart }: Props) => {
   const [addProduct, setAddProduct] = useState<boolean>(false);
   const [quantity, setQuantity] = React.useState('');
+  const [productExists, setProductExists] = useState<boolean>(false);
+
+  const checkIfProductExists = () => {
+    const cartList = store.get('cart');
+
+    const exists = cartList.map((item: any) => {
+      if (item.id === giftCard.product) return true;
+      return false;
+    });
+
+    setProductExists(exists);
+  };
 
   const addProductToCart = (event: SelectChangeEvent) => {
     const { value } = event.target;
     setQuantity(value);
-
     setAddProduct(!addProduct);
     addToCart({ id: giftCard.productId, quantity: value });
+
+    return checkIfProductExists();
   };
 
   return (
-    <section>
-      <div className='giftCard'>
+    <section className='giftCard'>
+      <div className='giftCard_image'>
         <img src={giftCard.img} alt='giftCard_image' loading='lazy' />
       </div>
       <div className='giftCard_content'>
         <h4>{giftCard.productName}</h4>
         <p>{giftCard.description}</p>
       </div>
-      <div className='flex items-center justify-between'>
+      <div className='giftCard_actions'>
         <Link
           to={`/products/${giftCard.productId}`}
           className='detail_link'
@@ -43,7 +57,9 @@ const GiftCard = ({ giftCard, addToCart }: Props) => {
         >
           View Detail
         </Link>
-        {addProduct ? (
+        {productExists ? (
+          <p>In Cart</p>
+        ) : addProduct ? (
           <div className='w-4/12'>
             <FormControl fullWidth size='small'>
               <Select

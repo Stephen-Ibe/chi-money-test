@@ -18,7 +18,6 @@ const productNav = [
 
 const Products = (props: Props) => {
   const uId = useId();
-
   const [giftCards, setGiftCards] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState<boolean>(false);
   const [catI, setCatI] = useState(0);
@@ -44,7 +43,7 @@ const Products = (props: Props) => {
     const cartList = store.get('cart');
     store.set('cart', [...cartList, data]);
 
-    uc();
+    return uc();
   };
 
   useEffect(() => {

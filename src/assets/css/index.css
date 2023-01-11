@@ -73,10 +73,10 @@
     @apply grid grid-cols-1 gap-8 gap-y-24 lg:grid-cols-4 md:grid-cols-2;
   }
 
-  .giftCard {
+  .giftCard_image {
     @apply h-[200px] w-[100%] relative;
   }
-  .giftCard img {
+  .giftCard_image img {
     @apply absolute object-cover w-full h-full;
   }
   .giftCard_content {
@@ -85,8 +85,16 @@
   .giftCard_content h4 {
     @apply text-lg font-semibold;
   }
-  .giftCard p {
-    @apply w-10/12 mt-2 text-xs;
+  .giftCard_content p {
+    @apply w-10/12 mt-2 text-sm;
+  }
+  .giftCard_actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .giftCard_actions p {
+    color: var(--chi-orange);
   }
 
   .detail_link {
@@ -96,9 +104,6 @@
 
   .detail_link:hover {
     color: var(--chi-orange);
-  }
-
-  .card_details {
   }
 
   .card_details p {
