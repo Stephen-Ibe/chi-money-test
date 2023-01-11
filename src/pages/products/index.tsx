@@ -7,6 +7,8 @@ import Skeleton from '@mui/material/Skeleton';
 import Box from '@mui/material/Box';
 import Navbar from '../../components/blocks/navbar';
 import { GenericType } from '../../types';
+import { Alert } from '@mui/material';
+import { toast } from 'react-toastify';
 
 type Props = {};
 
@@ -24,7 +26,6 @@ const Products = (props: Props) => {
 
   const handleCart = () => {
     const cart = store.get('cart');
-    console.log(cart);
 
     if (cart === undefined) {
       setCatI(0);
@@ -57,7 +58,8 @@ const Products = (props: Props) => {
     const cartList = store.get('cart');
     store.set('cart', [...cartList, data]);
 
-    return uc();
+    uc();
+    return toast.success('Item Added to Cart');
   };
 
   useEffect(() => {
@@ -70,64 +72,70 @@ const Products = (props: Props) => {
   }, []);
 
   return (
-    <div className='flex flex-col'>
-      <Navbar cartSize={catI} />
-      <div className='relative mt-20 chi-container'>
-        <div className='py-8 text-center border-b-2'>
-          <h1 className='text-3xl font-semibold'>
-            Shop for the perfect gift card
-          </h1>
-        </div>
-        <nav className='my-8'>
-          <ul className='shop_links'>
-            {productNav?.map(({ id, title }: { id: number; title: string }) => (
-              <li className='underline' key={id}>
-                <Link to='#'>{title}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <>
+      <Alert severity='success'>This is a success alert — check it out!</Alert>
 
-        <section className='p-8 my-16'>
-          <div className='products'>
-            {loading ? (
-              Array.from(new Array(12)).map((_, idx) => (
-                <div key={`${uId}_${idx}`}>
-                  <Box sx={{ rowGap: 1 }}>
-                    <Skeleton
-                      animation='wave'
-                      variant='rectangular'
-                      height={200}
-                    />
-                    <Skeleton
-                      width='60%'
-                      variant='text'
-                      style={{ marginTop: '8px' }}
-                    />
-                    <Skeleton />
-                    <Skeleton
-                      width='25%'
-                      variant='text'
-                      style={{ marginTop: '1rem' }}
-                    />
-                  </Box>
-                </div>
-              ))
-            ) : giftCards?.content?.length > 0 ? (
-              giftCards?.content?.map((giftCard: any) => (
-                <GiftCard
-                  key={giftCard.productId}
-                  giftCard={giftCard}
-                  addToCart={addToCart}
-                />
-              ))
-            ) : (
-              <p className='text-center'>No Gift Cards Founds</p>
-            )}
+      <div className='flex flex-col'>
+        <Navbar cartSize={catI} />
+        <div className='relative mt-20 chi-container'>
+          <div className='py-8 text-center border-b-2'>
+            <h1 className='text-3xl font-semibold'>
+              Shop for the perfect gift card
+            </h1>
           </div>
-        </section>
+          <nav className='my-8'>
+            <ul className='shop_links'>
+              {productNav?.map(
+                ({ id, title }: { id: number; title: string }) => (
+                  <li className='underline' key={id}>
+                    <Link to='#'>{title}</Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </nav>
+
+          <section className='p-8 my-16'>
+            <div className='products'>
+              {loading ? (
+                Array.from(new Array(12)).map((_, idx) => (
+                  <div key={`${uId}_${idx}`}>
+                    <Box sx={{ rowGap: 1 }}>
+                      <Skeleton
+                        animation='wave'
+                        variant='rectangular'
+                        height={200}
+                      />
+                      <Skeleton
+                        width='60%'
+                        variant='text'
+                        style={{ marginTop: '8px' }}
+                      />
+                      <Skeleton />
+                      <Skeleton
+                        width='25%'
+                        variant='text'
+                        style={{ marginTop: '1rem' }}
+                      />
+                    </Box>
+                  </div>
+                ))
+              ) : giftCards?.content?.length > 0 ? (
+                giftCards?.content?.map((giftCard: any) => (
+                  <GiftCard
+                    key={giftCard.productId}
+                    giftCard={giftCard}
+                    addToCart={addToCart}
+                  />
+                ))
+              ) : (
+                <p className='text-center'>No Gift Cards Founds</p>
+              )}
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
