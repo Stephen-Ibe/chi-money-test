@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useCallback, useEffect, useId, useState } from 'react';
 import store from 'store';
 import { getAllGiftCards } from '../../services/apis/Cards.api';
 import { Link } from 'react-router-dom';
@@ -18,10 +18,10 @@ const productNav = [
 
 const Products = (props: Props) => {
   const uId = useId();
-  const cartItems = store.get('cart');
 
   const [giftCards, setGiftCards] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState<boolean>(false);
+  const [catI, setCatI] = useState(0);
 
   const fetchAllGiftCards = async () => {
     setLoading(true);
@@ -35,11 +35,20 @@ const Products = (props: Props) => {
     }
   };
 
+  const uc = useCallback(() => {
+    const x = store.get('cart').length;
+    setCatI(x);
+  }, []);
+
   const addToCart = (data: GenericType) => {
-    store.set('cart', [...cartItems, data]);
+    const cartList = store.get('cart');
+    store.set('cart', [...cartList, data]);
+
+    uc();
   };
 
   useEffect(() => {
+    store.set('cart', []);
     fetchAllGiftCards();
 
     return () => {
@@ -49,7 +58,7 @@ const Products = (props: Props) => {
 
   return (
     <div className='flex flex-col'>
-      <Navbar />
+      <Navbar cartSize={catI} />
       <div className='relative mt-20 chi-container'>
         <div className='py-8 text-center border-b-2'>
           <h1 className='text-3xl font-semibold'>
