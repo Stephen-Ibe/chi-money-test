@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import store from 'store';
 import ChiButton from '../../common/button';
@@ -18,17 +18,18 @@ type Props = {
 const GiftCard = ({ giftCard, addToCart }: Props) => {
   const [addProduct, setAddProduct] = useState<boolean>(false);
   const [quantity, setQuantity] = React.useState('');
-  const [productExists, setProductExists] = useState<boolean>(false);
+  const [productExists, setProductExists] = useState<any>({});
 
   const checkIfProductExists = () => {
     const cartList = store.get('cart');
-
-    const exists = cartList.map((item: any) => {
-      if (item.id === giftCard.product) return true;
-      return false;
-    });
-
-    setProductExists(exists);
+    if (cartList.length <= 0) {
+      setProductExists({});
+    } else {
+      const exists = cartList.filter(
+        (item: any) => item.id === giftCard.productId
+      );
+      setProductExists(exists[0]);
+    }
   };
 
   const addProductToCart = (event: SelectChangeEvent) => {
@@ -39,6 +40,9 @@ const GiftCard = ({ giftCard, addToCart }: Props) => {
 
     return checkIfProductExists();
   };
+  useEffect(() => {
+    checkIfProductExists();
+  }, []);
 
   return (
     <section className='giftCard'>
@@ -57,7 +61,7 @@ const GiftCard = ({ giftCard, addToCart }: Props) => {
         >
           View Detail
         </Link>
-        {productExists ? (
+        {productExists?.id === giftCard.productId ? (
           <p>In Cart</p>
         ) : addProduct ? (
           <div className='w-4/12'>

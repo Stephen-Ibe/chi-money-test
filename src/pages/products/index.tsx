@@ -22,6 +22,20 @@ const Products = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [catI, setCatI] = useState(0);
 
+  const handleCart = () => {
+    const cart = store.get('cart');
+    console.log(cart);
+
+    if (cart === undefined) {
+      setCatI(0);
+      store.set('cart', []);
+
+      return;
+    }
+
+    return setCatI(cart.length);
+  };
+
   const fetchAllGiftCards = async () => {
     setLoading(true);
     try {
@@ -47,7 +61,7 @@ const Products = (props: Props) => {
   };
 
   useEffect(() => {
-    store.set('cart', []);
+    handleCart();
     fetchAllGiftCards();
 
     return () => {
